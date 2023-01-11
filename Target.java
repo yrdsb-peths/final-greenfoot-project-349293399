@@ -15,11 +15,9 @@ public class Target extends Actor
     GreenfootImage[] target=new GreenfootImage[1];
     public void act()
     {
-        target[1].scale(50,50);
+        
         if (Greenfoot.mouseClicked(this)){
             getWorld().removeObject(this);
-            //MyWorld world=(MyWorld) getWorld();
-            //world.createTarget();
         }
     }
 }

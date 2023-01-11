@@ -8,11 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
     SimpleTimer TargetTimer = new SimpleTimer();
     public MyWorld()
     {    
-        super(1000, 1000, 1, false);
+        super(800, 800, 1, false);
         
         TargetTimer.mark();
         
@@ -23,17 +22,43 @@ public class MyWorld extends World
     public void createTarget()
     {
         Target target = new Target();
-        addObject(target,10,10);
-        int x=Greenfoot.getRandomNumber(1000);
-        int y=Greenfoot.getRandomNumber(1000);
+        int x=Greenfoot.getRandomNumber(600);
+        int y=Greenfoot.getRandomNumber(650);
+        if(x<100)
+        {
+            x+=100;
+        }
+        if(y<50)
+        {
+            y+=50;
+        }
         addObject(target,x,y);
     }
     public void act(){
-        if(TargetTimer.millisElapsed() > 1000){
-            createTarget();
-            createTarget();
-            createTarget();
-            TargetTimer.mark();
+        int level=1;
+        if(level==1)
+        {
+            if(TargetTimer.millisElapsed() > 1500){
+                createTarget();
+                createTarget();
+                TargetTimer.mark();
+            }
+        }
+        if(level==2)
+        {
+            if(TargetTimer.millisElapsed() > 1000){
+                createTarget();
+                createTarget();
+                TargetTimer.mark();
+            }
+        }
+        if(level==3)
+        {
+            if(TargetTimer.millisElapsed() > 500){
+                createTarget();
+                createTarget();
+                TargetTimer.mark();
+            }
         }
     }
 
