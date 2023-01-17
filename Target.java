@@ -20,9 +20,10 @@ public class Target extends Actor
     
     //Sound for hitting target
     GreenfootSound hitTarget = new GreenfootSound("ding.mp3");
+    int count=0;
+    int imageIndex=0;
     public void act()
     {
-        TargetTimer.mark();
         //removes the target when target is clicked
         if (Greenfoot.mouseClicked(this)){
             MyWorld world = (MyWorld) getWorld();
@@ -30,22 +31,33 @@ public class Target extends Actor
             hitTarget.play();
             getWorld().removeObject(this);
         }
-        for(int i=0; i<Target.length; i++)
+        shrinkingTarget();
+        if(count==75)
         {
-            Target[i] = new GreenfootImage("images/Target/"+i+".png");
-        }
-        setImage(Target[0]);
-        for(int i=0; i<Target.length; i++)
-        {
-            if(TargetTimer.millisElapsed() > 200)
-            {
-                setImage(Target[i]);
-            }
-        }
-        if(TargetTimer.millisElapsed() > 200){
-            TargetTimer.mark();
+            count=0;
             getWorld().removeObject(this);
         }
         
+    }
+    public Target()
+    {
+        for(int i=0; i<Target.length; i++)
+        {
+            Target[i] = new GreenfootImage("images/Target/"+i+".png");
+            setImage(Target[i]);
+        }
+        TargetTimer.mark();
+    }
+    public void shrinkingTarget()
+    {
+    
+        if(TargetTimer.millisElapsed() < 300)
+        {
+            count++;
+            return;
+        }
+        TargetTimer.mark();
+        setImage(Target[imageIndex]);
+        imageIndex = (imageIndex+1)%Target.length;
     }
 }

@@ -17,7 +17,7 @@ public class TitleScreen extends World
         //creating size+labels
         super(800, 800, 1); 
         //title label
-        Label titleLabel = new Label("Lab Aims but worse",100);
+        Label titleLabel = new Label("Worse Aim but Labs",100);
         addObject(titleLabel,400,300);
         //controls for changing crosshair colours
         Label controls = new Label("click left or right arrow key to change crosshair", 40);
