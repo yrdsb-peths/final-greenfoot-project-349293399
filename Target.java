@@ -50,7 +50,7 @@ public class Target extends Actor
     }
     public void shrinkingTarget()
     {
-    
+        //increasing count
         if(TargetTimer.millisElapsed() < 300)
         {
             count++;

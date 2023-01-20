@@ -40,7 +40,7 @@ public class MyWorld extends World
     }
     public void increaseScore()
     {
-        score+=10;
+        score+=1;
         scoreLabel.setValue(score);
     }
     public void act(){
@@ -48,7 +48,6 @@ public class MyWorld extends World
         {
             if(TargetTimer.millisElapsed() > 1500)
             {
-            createTarget();
             createTarget();
             TargetTimer.mark();
             }
@@ -58,7 +57,6 @@ public class MyWorld extends World
             if(TargetTimer.millisElapsed() > 1250)
             {
             createTarget();
-            createTarget();
             TargetTimer.mark();
             }
         }
@@ -66,7 +64,6 @@ public class MyWorld extends World
         {
             if(TargetTimer.millisElapsed() > 1000)
             {
-            createTarget();
             createTarget();
             TargetTimer.mark();
             }
@@ -76,7 +73,6 @@ public class MyWorld extends World
             if(TargetTimer.millisElapsed() > 750)
             {
             createTarget();
-            createTarget();
             TargetTimer.mark();
             }
         }
@@ -84,7 +80,6 @@ public class MyWorld extends World
         {
             if(TargetTimer.millisElapsed() > 500)
             {
-            createTarget();
             createTarget();
             TargetTimer.mark();
             }
