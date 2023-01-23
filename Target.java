@@ -22,6 +22,7 @@ public class Target extends Actor
     GreenfootSound hitTarget = new GreenfootSound("ding.mp3");
     int count=0;
     int imageIndex=0;
+    
     public void act()
     {
         //removes the target when target is clicked
@@ -31,7 +32,11 @@ public class Target extends Actor
             hitTarget.play();
             getWorld().removeObject(this);
         }
+        
+        //plays the shrinkingTarget method
         shrinkingTarget();
+        
+        //makes it so after a current amount of time the target leaves
         if(count==75)
         {
             count=0;
@@ -41,6 +46,7 @@ public class Target extends Actor
     }
     public Target()
     {
+        //adds all target images into an array
         for(int i=0; i<Target.length; i++)
         {
             Target[i] = new GreenfootImage("images/Target/"+i+".png");
@@ -56,6 +62,8 @@ public class Target extends Actor
             count++;
             return;
         }
+        
+        //shrinks target
         TargetTimer.mark();
         setImage(Target[imageIndex]);
         imageIndex = (imageIndex+1)%Target.length;

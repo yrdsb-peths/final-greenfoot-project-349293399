@@ -8,16 +8,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
+    //creating score
     public int score = 0;
     Label scoreLabel;
-    int level = 1;
+    
+    //adding timer
     SimpleTimer TargetTimer = new SimpleTimer();
     public MyWorld()
-    {    
+    {   
+        
         super(1200, 600, 1, false);
         
         TargetTimer.mark();
         
+        //creating crosshair
         bow bow = new bow();
         
         addObject(bow, -10, -10);
@@ -28,11 +32,13 @@ public class MyWorld extends World
     }
     public int randomNumber(int min, int max)
     {
+        //random number gen
         int result= Greenfoot.getRandomNumber(max-min+1);
         return result + min;
     }
     public void createTarget()
     {
+        //creating targets
         Target target = new Target();
         int x=randomNumber(150, 1050);
         int y=randomNumber(150, 450);
@@ -40,10 +46,13 @@ public class MyWorld extends World
     }
     public void increaseScore()
     {
+        //increases your score
         score+=1;
         scoreLabel.setValue(score);
     }
-    public void act(){
+    public void act()
+    {
+        //increasing target spawn rate as score increases
         if(score<=9)
         {
             if(TargetTimer.millisElapsed() > 1500)
@@ -84,12 +93,12 @@ public class MyWorld extends World
             TargetTimer.mark();
             }
         }
+        //brings the player to the endscreen
         else if(50<=score)
         {
             Endscreen end = new Endscreen();
             Greenfoot.setWorld(end);
         }
-        
     }
     
 

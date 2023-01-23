@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class bow extends Actor
 {
+    //array for different crosshairs
     GreenfootImage[] Crosshairs=new GreenfootImage[6];
+    
     int crossCount=0;
     public bow()
     {
@@ -23,8 +25,10 @@ public class bow extends Actor
     {
         Greenfoot.delay(1);
     }
+    
     public void checkCross()
     {
+        //allows you to switch crosshairs
         if(Greenfoot.isKeyDown("left"))
         {
             pause();
@@ -54,6 +58,7 @@ public class bow extends Actor
     }
 
     public void act(){
+        //makes the crosshairs follow your mouse
         MouseInfo info = Greenfoot.getMouseInfo();
         if(info != null){
             int x = info.getX();
